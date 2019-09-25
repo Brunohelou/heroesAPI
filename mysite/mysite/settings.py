@@ -26,7 +26,7 @@ SECRET_KEY = 'i92#(upubvp&^5(6a!^_#%!zgl=6mv!nanqrf*6z63h196#3rr'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    *
+    '*'
    # 'http://eescjrapp.ddns.net/api'
 
 ]
