@@ -25,7 +25,11 @@ SECRET_KEY = 'i92#(upubvp&^5(6a!^_#%!zgl=6mv!nanqrf*6z63h196#3rr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    *
+   # 'http://eescjrapp.ddns.net/api'
+
+]
 
 
 # Application definition
@@ -42,6 +46,11 @@ INSTALLED_APPS = [
     'myapi.apps.MyapiConfig',
     'rest_framework',
     'corsheaders',
+    'rest_auth',
+    'oauth2_provider',
+    'rest_framework.authtoken',
+    
+    
 ]
 CORS_ALLOW_METHODS = [
     'DELETE',
@@ -63,6 +72,7 @@ MIDDLEWARE = [
     #'app.CorsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
     
 ]
 
@@ -93,17 +103,25 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hero',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
+        'NAME': 'shields',
+        'USER': 'bruno',
+        'PASSWORD': '854764ab',
         'HOST': 'localhost',
         'PORT': '',
     }
 }
 REST_FRAMEWORK = {
-     'DEFAULT_AUTHENTICATION_CLASSES': [],
-    'DEFAULT_PERMISSION_CLASSES': [],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        
+      #  'rest_framework.authentication.TokenAuthentication', 
+          # <-- And here
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+      # 'rest_framework.permissions.IsAuthenticated',
+    ),
+
 }
+
 
 
 # Password validation
