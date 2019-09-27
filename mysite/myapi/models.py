@@ -20,8 +20,9 @@ class Hero(models.Model):
         return self.name
 
 class UserProfile(models.Model):
-    user =  models.ForeignKey(User, on_delete=models.CASCADE, related_name="person", primary_key=True)
+    
+    user =  models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     description= models.CharField(max_length= 100, default='')
     heroes = models.ManyToManyField(Hero, related_name='herolist')
-     
+        
 

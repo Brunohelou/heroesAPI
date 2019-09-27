@@ -6,6 +6,8 @@ from django.conf.urls import url
 router = routers.DefaultRouter()
 router.register(r'users', views.UserProfileViewSet)
 router.register(r'heroes', views.HeroViewSet)
+router.register(r'register', views.UserViewSet),
+router.register(r'userid', views.UserIdViewSet, base_name="UserId"),
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
